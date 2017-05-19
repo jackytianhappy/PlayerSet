@@ -48,9 +48,10 @@
 
 }
 
+
+//attention 获取正确的监听装填进行监听播放状态
 - (void)addNotification{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(moviePlayerLoadStateDidChange) name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
-    
 }
 
 - (void)moviePlayerLoadStateDidChange{
