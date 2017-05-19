@@ -26,21 +26,36 @@
     
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 200, 40)];
     [btn setBackgroundColor:[UIColor redColor]];
-    [btn setTitle:@"点击我进行网络加载我进行网络加载" forState:UIControlStateNormal];
+    [btn setTitle:@"开始进行播放" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(showMPMovieMediaController) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.view addSubview:btn];
-
     
+    [self initPlayer];
+
+    [self addNotification];
+}
+
+- (void)initPlayer{
+    self.moviewPlayer = [[MPMoviePlayerController alloc]initWithContentURL:[NSURL URLWithString:@"http://vf1.mtime.cn/Video/2012/04/23/mp4/120423212602431929.mp4"]];
+    self.moviewPlayer.view.frame = CGRectMake(0, 150, [UIScreen mainScreen].bounds.size.width, 300);
+    self.moviewPlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    
+//    self.moviewPlayer.backgroundView.backgroundColor = [UIColor redColor];
+    
+    [self.view addSubview:self.moviewPlayer.view];
+    
+    [self.moviewPlayer prepareToPlay];
+
 }
 
 - (void)addNotification{
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkMovieStatus:) name:MPMoviePlayerLoadStateDidChangeNotification object:self.moviewPlayer];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(moviePlayerLoadStateDidChange) name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkMovieStatus:) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviewPlayer];
 }
 
-- (void)checkMovieStatus:(NSNotification *)notification{
+- (void)moviePlayerLoadStateDidChange{
+    NSLog(@"点击到我了");
+    
     switch (self.moviewPlayer.playbackState) {
         case MPMoviePlaybackStatePlaying:
             NSLog(@"正在播放...");
@@ -59,17 +74,6 @@
 
 
 - (void)showMPMovieMediaController{
-    self.moviewPlayer = [[MPMoviePlayerController alloc]initWithContentURL:[NSURL URLWithString:@"http://vf1.mtime.cn/Video/2012/04/23/mp4/120423212602431929.mp4"]];
-    self.moviewPlayer.view.frame = self.view.bounds;
-    self.moviewPlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    
-    self.moviewPlayer.backgroundView.backgroundColor = [UIColor redColor];
-    
-    [self.view addSubview:self.moviewPlayer.view];
-    
-    
-    [self addNotification];
-    
     
     [self.moviewPlayer play];
 }
