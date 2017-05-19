@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "JMediaPlayerVC.h"
+
 
 @interface AppDelegate ()
 
@@ -17,6 +19,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    JMediaPlayerVC *vc = [[JMediaPlayerVC alloc]init];
+    
+    self.window = [[UIWindow alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    
+    self.window.rootViewController = vc ;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

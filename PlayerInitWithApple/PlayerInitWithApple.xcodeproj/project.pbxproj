@@ -13,6 +13,7 @@
 		85416D981ECECC44005D0B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85416D961ECECC44005D0B7E /* Main.storyboard */; };
 		85416D9A1ECECC44005D0B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85416D991ECECC44005D0B7E /* Assets.xcassets */; };
 		85416D9D1ECECC44005D0B7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85416D9B1ECECC44005D0B7E /* LaunchScreen.storyboard */; };
+		85416DA81ECECCC7005D0B7E /* JMediaPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 85416DA71ECECCC7005D0B7E /* JMediaPlayerVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		85416D991ECECC44005D0B7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85416D9C1ECECC44005D0B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85416D9E1ECECC44005D0B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85416DA61ECECCC7005D0B7E /* JMediaPlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMediaPlayerVC.h; sourceTree = "<group>"; };
+		85416DA71ECECCC7005D0B7E /* JMediaPlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMediaPlayerVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 		85416D8C1ECECC44005D0B7E /* PlayerInitWithApple */ = {
 			isa = PBXGroup;
 			children = (
+				85416DA51ECECCA5005D0B7E /* AVKit */,
+				85416DA41ECECC92005D0B7E /* MediaPlayer */,
 				85416D901ECECC44005D0B7E /* AppDelegate.h */,
 				85416D911ECECC44005D0B7E /* AppDelegate.m */,
 				85416D931ECECC44005D0B7E /* ViewController.h */,
@@ -77,6 +82,22 @@
 				85416D8E1ECECC44005D0B7E /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		85416DA41ECECC92005D0B7E /* MediaPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				85416DA61ECECCC7005D0B7E /* JMediaPlayerVC.h */,
+				85416DA71ECECCC7005D0B7E /* JMediaPlayerVC.m */,
+			);
+			name = MediaPlayer;
+			sourceTree = "<group>";
+		};
+		85416DA51ECECCA5005D0B7E /* AVKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AVKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +175,7 @@
 				85416D951ECECC44005D0B7E /* ViewController.m in Sources */,
 				85416D921ECECC44005D0B7E /* AppDelegate.m in Sources */,
 				85416D8F1ECECC44005D0B7E /* main.m in Sources */,
+				85416DA81ECECCC7005D0B7E /* JMediaPlayerVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
