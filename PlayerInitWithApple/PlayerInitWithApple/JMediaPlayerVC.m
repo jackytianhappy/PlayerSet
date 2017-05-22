@@ -36,7 +36,11 @@
 }
 
 - (void)initPlayer{
+    //rtmp://10.0.114.80/myapp/mystream
     self.moviewPlayer = [[MPMoviePlayerController alloc]initWithContentURL:[NSURL URLWithString:@"http://vf1.mtime.cn/Video/2012/04/23/mp4/120423212602431929.mp4"]];
+    //不支持RTMP的播放
+//    self.moviewPlayer = [[MPMoviePlayerController alloc]initWithContentURL:[NSURL URLWithString:@"rtmp://10.0.114.80/myapp/mystream"]];
+    
     self.moviewPlayer.view.frame = CGRectMake(0, 150, [UIScreen mainScreen].bounds.size.width, 300);
     self.moviewPlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     

@@ -21,6 +21,10 @@ typedef NS_ENUM(NSUInteger,isPauseOrStart){
 
 @property (nonatomic,strong) AVPlayerViewController *playerVC;
 
+@property (nonatomic,strong) UIProgressView *progressView;//进度条
+
+@property (nonatomic,strong) UISlider *sliderBar;//滑动bar
+
 @end
 
 @implementation AVPlayerDemoVC
@@ -33,7 +37,13 @@ typedef NS_ENUM(NSUInteger,isPauseOrStart){
     [self createAVPlayer];
     
     [self makeControlViews];
+    
+    //添加播放器监听教程
+    [self addProgress];
+
 }
+
+
 
 
 /**
@@ -41,7 +51,13 @@ typedef NS_ENUM(NSUInteger,isPauseOrStart){
  */
 - (void)createAVPlayer{
     self.playerVC = [[AVPlayerViewController alloc]init];
-    self.playerVC.player = [[AVPlayer alloc]initWithURL:[NSURL URLWithString:@"http://vf1.mtime.cn/Video/2012/04/23/mp4/120423212602431929.mp4"]];
+    
+    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:@"http://vf1.mtime.cn/Video/2012/04/23/mp4/120423212602431929.mp4"]];
+    
+    self.playerVC.player = [AVPlayer playerWithPlayerItem:item];
+    //播放不了rtmp协议
+//    rtmp://10.0.114.80/myapp/mystream
+//    self.playerVC.player = [[AVPlayer alloc]initWithURL:[NSURL URLWithString:@"rtmp://10.0.114.80/myapp/mystream"]];
     self.playerVC.view.frame = self.view.bounds;
     
     self.playerVC.showsPlaybackControls = NO; //隐藏掉原生界面的控制按钮，接下来可以通过视图进行自定义
@@ -51,16 +67,79 @@ typedef NS_ENUM(NSUInteger,isPauseOrStart){
     [self.view addSubview:self.playerVC.view];
     
     [self.playerVC.player play];
+    
+    
 }
 
+- (void)addProgress{
+    AVPlayerItem *item = self.playerVC.player.currentItem;
+    UIProgressView *progress = self.progressView;
+    
+    UISlider *slider = self.sliderBar;
+    slider.minimumValue = 0;
+    slider.maximumValue = 1;
+    
+    
+    [self.playerVC.player addPeriodicTimeObserverForInterval:CMTimeMake(1., 1.) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        
+        //CMTime是视频时间信息的结构体 包含视频时间点、美秒的帧数等信息
+        //获取当前的播放到的描述
+        float current = CMTimeGetSeconds(time);
+        
+        //获取总的视频时间长度
+        float total = CMTimeGetSeconds(item.duration);
+    
+        if (current) {
+            [progress setProgress:(current/total) animated:YES];
+            NSLog(@"开始进行监听了:%f",(current/total));
+            
+            slider.value = (current/total);
+        }
+        
+    }];
+}
+
+
 - (void)makeControlViews{
+    //创建开始暂停按钮
     self.pauseOrStartBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 100, 100, 100)];
     [self.pauseOrStartBtn setTitle:@"暂停" forState:UIControlStateNormal];
     self.pauseOrStartBtn.tag = player_start;
     [self.pauseOrStartBtn addTarget:self action:@selector(pauseOrStartAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.pauseOrStartBtn setBackgroundColor:[UIColor redColor]];
     [self.view addSubview:self.pauseOrStartBtn];
+    
+    //创建进度条
+    self.progressView = [[UIProgressView alloc]initWithFrame:CGRectMake(10, 40, [UIScreen mainScreen].bounds.size.width- 20, 30)];
+    self.progressView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:self.progressView];
+    
+    //创建控制的的进度条
+    self.sliderBar = [[UISlider alloc]initWithFrame:CGRectMake(10, 80, [UIScreen mainScreen].bounds.size.width- 20, 30)];
+    self.sliderBar.continuous = YES;
+    [self.view addSubview:self.sliderBar];
+    [self.sliderBar addTarget:self action:@selector(changeSliderValue:) forControlEvents:UIControlEventValueChanged];
+    
 }
+
+- (void)changeSliderValue:(id)sender{
+    NSLog(@"开始进行拖拽");
+    UISlider *slider = (UISlider *)sender;
+    
+    
+    AVPlayerItem *item = self.playerVC.player.currentItem;
+    
+//    //获取当前的播放到的描述
+//    float current = CMTimeGetSeconds(item.duration);
+//    
+//    //获取总的视频时间长度
+//    float total = CMTimeGetSeconds(item.duration);
+    
+    [self.playerVC.player seekToTime:CMTimeMake(CMTimeGetSeconds(item.duration)*slider.value, 1)];
+    
+    
+}
+
 
 - (void)pauseOrStartAction:(id)sender{
     UIButton *btn = (UIButton *)sender;
