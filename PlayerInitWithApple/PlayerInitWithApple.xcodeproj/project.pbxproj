@@ -15,6 +15,10 @@
 		85416D9D1ECECC44005D0B7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85416D9B1ECECC44005D0B7E /* LaunchScreen.storyboard */; };
 		85416DA81ECECCC7005D0B7E /* JMediaPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 85416DA71ECECCC7005D0B7E /* JMediaPlayerVC.m */; };
 		85416DAB1ECEE7EF005D0B7E /* AVPlayerDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 85416DAA1ECEE7EF005D0B7E /* AVPlayerDemoVC.m */; };
+		85C13F2E1ED67A58008E38E9 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C13F2D1ED67A58008E38E9 /* IJKMediaFramework.framework */; };
+		85C13F311ED67C1D008E38E9 /* IJKPlayerDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C13F301ED67C1D008E38E9 /* IJKPlayerDemoVC.m */; };
+		85C13F351ED680C1008E38E9 /* IJKPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C13F341ED680C1008E38E9 /* IJKPlayerVC.m */; };
+		85C13F3B1ED6870E008E38E9 /* IJKHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C13F3A1ED6870E008E38E9 /* IJKHistory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,13 @@
 		85416DA71ECECCC7005D0B7E /* JMediaPlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMediaPlayerVC.m; sourceTree = "<group>"; };
 		85416DA91ECEE7EF005D0B7E /* AVPlayerDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerDemoVC.h; sourceTree = "<group>"; };
 		85416DAA1ECEE7EF005D0B7E /* AVPlayerDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerDemoVC.m; sourceTree = "<group>"; };
+		85C13F2D1ED67A58008E38E9 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
+		85C13F2F1ED67C1D008E38E9 /* IJKPlayerDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKPlayerDemoVC.h; sourceTree = "<group>"; };
+		85C13F301ED67C1D008E38E9 /* IJKPlayerDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKPlayerDemoVC.m; sourceTree = "<group>"; };
+		85C13F331ED680C1008E38E9 /* IJKPlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKPlayerVC.h; sourceTree = "<group>"; };
+		85C13F341ED680C1008E38E9 /* IJKPlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKPlayerVC.m; sourceTree = "<group>"; };
+		85C13F391ED6870E008E38E9 /* IJKHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJKHistory.h; sourceTree = "<group>"; };
+		85C13F3A1ED6870E008E38E9 /* IJKHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJKHistory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85C13F2E1ED67A58008E38E9 /* IJKMediaFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +76,8 @@
 		85416D8C1ECECC44005D0B7E /* PlayerInitWithApple */ = {
 			isa = PBXGroup;
 			children = (
+				85C13F2C1ED67A44008E38E9 /* IJKPlayerFramework */,
+				854C63D41ED3022900989D98 /* IJKPlayer */,
 				85416DA51ECECCA5005D0B7E /* AVKit */,
 				85416DA41ECECC92005D0B7E /* MediaPlayer */,
 				85416D901ECECC44005D0B7E /* AppDelegate.h */,
@@ -103,6 +117,35 @@
 				85416DAA1ECEE7EF005D0B7E /* AVPlayerDemoVC.m */,
 			);
 			name = AVKit;
+			sourceTree = "<group>";
+		};
+		854C63D41ED3022900989D98 /* IJKPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				85C13F321ED680A2008E38E9 /* IJKPlayerController */,
+				85C13F2F1ED67C1D008E38E9 /* IJKPlayerDemoVC.h */,
+				85C13F301ED67C1D008E38E9 /* IJKPlayerDemoVC.m */,
+			);
+			name = IJKPlayer;
+			sourceTree = "<group>";
+		};
+		85C13F2C1ED67A44008E38E9 /* IJKPlayerFramework */ = {
+			isa = PBXGroup;
+			children = (
+				85C13F2D1ED67A58008E38E9 /* IJKMediaFramework.framework */,
+			);
+			name = IJKPlayerFramework;
+			sourceTree = "<group>";
+		};
+		85C13F321ED680A2008E38E9 /* IJKPlayerController */ = {
+			isa = PBXGroup;
+			children = (
+				85C13F331ED680C1008E38E9 /* IJKPlayerVC.h */,
+				85C13F341ED680C1008E38E9 /* IJKPlayerVC.m */,
+				85C13F391ED6870E008E38E9 /* IJKHistory.h */,
+				85C13F3A1ED6870E008E38E9 /* IJKHistory.m */,
+			);
+			name = IJKPlayerController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,8 +223,11 @@
 				85416D951ECECC44005D0B7E /* ViewController.m in Sources */,
 				85416D921ECECC44005D0B7E /* AppDelegate.m in Sources */,
 				85416D8F1ECECC44005D0B7E /* main.m in Sources */,
+				85C13F351ED680C1008E38E9 /* IJKPlayerVC.m in Sources */,
 				85416DA81ECECCC7005D0B7E /* JMediaPlayerVC.m in Sources */,
+				85C13F311ED67C1D008E38E9 /* IJKPlayerDemoVC.m in Sources */,
 				85416DAB1ECEE7EF005D0B7E /* AVPlayerDemoVC.m in Sources */,
+				85C13F3B1ED6870E008E38E9 /* IJKHistory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +348,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L9ALLF39KA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PlayerInitWithApple",
+				);
 				INFOPLIST_FILE = PlayerInitWithApple/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jakcy.test.PlayerInitWithApple;
@@ -314,6 +364,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L9ALLF39KA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PlayerInitWithApple",
+				);
 				INFOPLIST_FILE = PlayerInitWithApple/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jakcy.test.PlayerInitWithApple;
@@ -340,6 +394,7 @@
 				85416DA31ECECC44005D0B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

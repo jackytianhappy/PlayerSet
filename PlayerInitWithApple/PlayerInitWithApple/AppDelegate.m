@@ -11,6 +11,8 @@
 
 #import "AVPlayerDemoVC.h"
 
+#import "IJKPlayerVC.h"
+
 @interface AppDelegate ()
 
 @end
@@ -22,8 +24,9 @@
     // Override point for customization after application launch.
     
 //    JMediaPlayerVC *vc = [[JMediaPlayerVC alloc]init];
-    AVPlayerDemoVC *vc = [[AVPlayerDemoVC alloc]init];
+//    AVPlayerDemoVC *vc = [[AVPlayerDemoVC alloc]init];
     
+    IJKPlayerVC *vc = [[IJKPlayerVC alloc]init];
     
     self.window = [[UIWindow alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     
